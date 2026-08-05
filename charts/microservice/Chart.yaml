@@ -1,0 +1,8 @@
+apiVersion: v2
+# A "library chart" style microservice chart reused across every service.
+# Each GitOps environment just swaps in a different values.yaml.
+name: microservice
+description: Minimal generic chart for our microservices (auth, order, payment)
+type: application
+version: 0.1.0   # chart version (template changes)
+appVersion: "1.0.0"

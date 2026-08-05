@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "microservice.fullname" . }}
+spec:
+  type: {{ .Values.service.type }}
+  # ClusterIP keeps the service reachable only inside the cluster.
+  # An Ingress (added later) will front it for external traffic.
+  selector:
+    app: {{ include "microservice.fullname" . }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      protocol: TCP

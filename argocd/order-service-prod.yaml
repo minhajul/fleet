@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # The Application object itself lives in the cluster, not in your app namespace.
+  name: order-service-prod
+  namespace: argocd              # where ArgoCD controllers watch from
+spec:
+  project: default
+
+  # SOURCE = where the chart + env values come from in git.
+  source:
+    repoURL: https://github.com/minhajul/fleet.git
+    targetRevision: main         # which branch ArgoCD syncs from
+    path: charts/microservice    # the generic chart
+    helm:
+      # The env-specific values file is layered on top of the chart defaults.
+      valueFiles:
+        - ../../env/prod/order-values.yaml
+      # releaseName feeds the chart's `fullname` helper so resources are
+      # uniquely named (order-prod) rather than colliding on `microservice`.
+      releaseName: order-prod
+      # You can also override parameters inline; left empty here for clarity.
+      parameters: []
+
+  # DESTINATION = the cluster + namespace where the workload lands.
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod              # ArgoCD will create this namespace if missing
+
+  # GitOps sync policy: auto-sync keeps prod in step with the git truth.
+  syncPolicy:
+    automated:
+      prune: true                # delete resources removed from git
+      selfHeal: true             # revert manual kubectl drift back to git
+    syncOptions:
+      - CreateNamespace=true     # allow ArgoCD to create the 'prod' ns

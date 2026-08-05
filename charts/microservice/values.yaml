@@ -1,0 +1,18 @@
+# Default values consumed when an environment file doesn't override them.
+# In GitOps we keep this file minimal — env-specific files override what matters.
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: latest
+  pullPolicy: IfNotPresent
+
+containerPort: 8080
+
+env: []   # injected as container env vars, e.g. [{name: LOG_LEVEL, value: info}]
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
