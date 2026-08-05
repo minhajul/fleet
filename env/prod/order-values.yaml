@@ -3,7 +3,7 @@ image:
   repository: ghcr.io/minhajul/order-service
   tag: "3021e8e" # promote the tag you vetted in staging
   pullPolicy: IfNotPresent
-replicaCount: 3 # enough pods to absorb rolling updates without dropping traffic
+replicaCount: 2 # enough pods to absorb rolling updates without dropping traffic
 env:
   - name: APP_ENV
     value: "prod"
