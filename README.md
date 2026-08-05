@@ -1,4 +1,4 @@
-# fleet — GitOps deployment repository
+# Fleet — GitOps deployment repository
 
 This repo ships the **desired state** for our microservices in production. Each service repo only contains its source
 code and a CI workflow; values and ArgoCD apps live here in fleet.
