@@ -26,7 +26,7 @@ fleet/
     └── payment-service-prod.yaml
 ```
 
-## How a deploy happens
+## How a deployment happens
 
 1. CI in a service repo (e.g. `auth-service`) builds and pushes an image tagged with the short SHA.
 2. CI then opens/edits `env/prod/<service>-values.yaml` in this fleet repo, bumping `image.tag`.

@@ -1,7 +1,7 @@
 # Prod env: stable immutable tag and zero-downtime rollout size.
 image:
-  repository: ghcr.io/minhajul/auth-service
-  tag: "v0.1.0"        # promote the tag you vetted in staging
+  repository: nginx
+  tag: "alpine"        # public image — proves the GitOps loop without registry auth
   pullPolicy: IfNotPresent
 
 replicaCount: 3         # enough pods to absorb rolling updates without dropping traffic
