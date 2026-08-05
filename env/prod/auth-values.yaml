@@ -1,7 +1,7 @@
 # Prod env: stable immutable tag and zero-downtime rollout size.
 image:
   repository: ghcr.io/minhajul/auth-service
-  tag: "4c6749d" # promote the tag you vetted in staging
+  tag: "" # promote the tag you vetted in staging
   pullPolicy: IfNotPresent
 replicaCount: 2 # enough pods to absorb rolling updates without dropping traffic
 env:
