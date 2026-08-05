@@ -1,11 +1,9 @@
 # Prod env: stable immutable tag and zero-downtime rollout size.
 image:
   repository: ghcr.io/minhajul/order-service
-  tag: "v0.1.0"        # promote the tag you vetted in staging
+  tag: "" # promote the tag you vetted in staging
   pullPolicy: IfNotPresent
-
-replicaCount: 3         # enough pods to absorb rolling updates without dropping traffic
-
+replicaCount: 3 # enough pods to absorb rolling updates without dropping traffic
 env:
   - name: APP_ENV
     value: "prod"
